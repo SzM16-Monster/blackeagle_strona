@@ -34,7 +34,7 @@ function App() {
     // Co wyświetlamy na stronie
     return (
         <div style={{ padding: "20px" }}>
-            <h1>Moje filmy</h1>
+            <h1>Moje filmy i seriale:</h1>
 
             {/* Pokazujemy błąd, jeśli jest */}
             {errorMessage !== "" && <p style={{ color: "red" }}>{errorMessage}</p>}
