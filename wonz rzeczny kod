@@ -1,0 +1,260 @@
+package Sneake_Game;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.LinkedList;
+import java.util.Random;
+
+public class SnakeGame extends JPanel implements ActionListener, KeyListener {
+
+    private int width = 600;
+    private int height = 600;
+    private int dotSize = 20;
+    private int randPos = 29;
+    private int delay = 140;
+
+    private Color snakeColor = Color.green;
+    private Color appleColor = Color.red;
+    private Color backgroundColor = Color.black;
+    private Color obstacleColor = Color.gray;
+
+    private LinkedList<Point> snake;
+    private Point apple;
+    private LinkedList<Point> obstacles;
+    private boolean left = false, right = true, up = false, down = false;
+    private boolean inGame = false;
+    private boolean showStartScreen = true;
+    private String difficulty = "Medium";
+    private int score = 0;
+    private Timer timer;
+
+    public SnakeGame() {
+        this.setPreferredSize(new Dimension(width, height));
+        this.setBackground(backgroundColor);
+        this.setFocusable(true);
+        this.addKeyListener(this);
+    }
+
+    public void initializeGame() {
+        snake = new LinkedList<>();
+        snake.add(new Point(100, 100));
+        spawnApple();
+        obstacles = new LinkedList<>();
+        if (difficulty.equals("Hard")) {
+            spawnObstacles();
+        }
+        score = 0;
+
+        left = false;
+        right = true;
+        up = false;
+        down = false;
+
+        inGame = true;
+        showStartScreen = false;
+
+        timer = new Timer(delay, this);
+        timer.start();
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (showStartScreen) {
+            drawStartScreen(g);
+        } else if (inGame) {
+            drawGame(g);
+        } else {
+            drawGameOverScreen(g);
+        }
+    }
+
+    public void drawStartScreen(Graphics g) {
+        String message = "Snake Game";
+        String startMessage = "Press 1 for Easy, 2 for Medium, 3 for Hard";
+
+        g.setColor(snakeColor);
+        g.setFont(new Font("Helvetica", Font.BOLD, 40));
+        FontMetrics metrics = getFontMetrics(g.getFont());
+        g.drawString(message, (width - metrics.stringWidth(message)) / 2, height / 2 - 40);
+
+        g.setFont(new Font("Helvetica", Font.PLAIN, 20));
+        metrics = getFontMetrics(g.getFont());
+        g.drawString(startMessage, (width - metrics.stringWidth(startMessage)) / 2, height / 2 + 20);
+    }
+
+    public void drawGame(Graphics g) {
+        setBackground(backgroundColor);
+
+        g.setColor(snakeColor);
+        for (Point p : snake) {
+            g.fillRect(p.x, p.y, dotSize, dotSize);
+        }
+
+        g.setColor(appleColor);
+        g.fillRect(apple.x, apple.y, dotSize, dotSize);
+
+        if (difficulty.equals("Hard")) {
+            g.setColor(obstacleColor);
+            for (Point p : obstacles) {
+                g.fillRect(p.x, p.y, dotSize, dotSize);
+            }
+        }
+
+        g.setColor(Color.white);
+        g.setFont(new Font("Helvetica", Font.BOLD, 20));
+        g.drawString("Score: " + score, width - 120, 30);
+        g.drawString("Difficulty: " + difficulty, 20, 30);
+
+        Toolkit.getDefaultToolkit().sync();
+    }
+
+    public void drawGameOverScreen(Graphics g) {
+        String gameOverMessage = "Game Over";
+        String scoreMessage = "Final Score: " + score;
+        String restartMessage = "Press ENTER to Play Again";
+
+        g.setColor(Color.white);
+        g.setFont(new Font("Helvetica", Font.BOLD, 40));
+        FontMetrics metrics = getFontMetrics(g.getFont());
+        g.drawString(gameOverMessage, (width - metrics.stringWidth(gameOverMessage)) / 2, height / 2 - 40);
+
+        g.setFont(new Font("Helvetica", Font.PLAIN, 20));
+        metrics = getFontMetrics(g.getFont());
+        g.drawString(scoreMessage, (width - metrics.stringWidth(scoreMessage)) / 2, height / 2);
+        g.drawString(restartMessage, (width - metrics.stringWidth(restartMessage)) / 2, height / 2 + 40);
+    }
+
+    public void spawnApple() {
+        Random rand = new Random();
+        int x = rand.nextInt(randPos) * dotSize;
+        int y = rand.nextInt(randPos) * dotSize;
+        apple = new Point(x, y);
+    }
+
+    public void spawnObstacles() {
+        Random rand = new Random();
+        obstacles.clear();
+        for (int i = 0; i < 10; i++) {
+            int x = rand.nextInt(randPos) * dotSize;
+            int y = rand.nextInt(randPos) * dotSize;
+            obstacles.add(new Point(x, y));
+        }
+    }
+
+    public void move() {
+        if (snake.isEmpty()) return;
+
+        Point head = snake.getFirst();
+        Point newHead = null;
+
+        if (left) newHead = new Point(head.x - dotSize, head.y);
+        else if (right) newHead = new Point(head.x + dotSize, head.y);
+        else if (up) newHead = new Point(head.x, head.y - dotSize);
+        else if (down) newHead = new Point(head.x, head.y + dotSize);
+
+        if (difficulty.equals("Easy")) {
+            if (newHead.x < 0) newHead.x = width - dotSize;
+            if (newHead.x >= width) newHead.x = 0;
+            if (newHead.y < 0) newHead.y = height - dotSize;
+            if (newHead.y >= height) newHead.y = 0;
+        }
+
+        snake.addFirst(newHead);
+        if (newHead.equals(apple)) {
+            score++;
+            spawnApple();
+        } else {
+            snake.removeLast();
+        }
+    }
+
+    public void checkCollision() {
+        Point head = snake.getFirst();
+
+        if (!difficulty.equals("Easy")) {
+            if (head.x < 0 || head.x >= width || head.y < 0 || head.y >= height) inGame = false;
+        }
+
+        for (int i = 1; i < snake.size(); i++) {
+            if (head.equals(snake.get(i))) inGame = false;
+        }
+
+        if (difficulty.equals("Hard")) {
+            for (Point obstacle : obstacles) {
+                if (head.equals(obstacle)) inGame = false;
+            }
+        }
+
+        if (!inGame && timer != null) timer.stop();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (inGame) {
+            move();
+            checkCollision();
+        }
+        repaint();
+    }
+
+    @Override public void keyTyped(KeyEvent e) {}
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+
+        if (showStartScreen) {
+            if (key == KeyEvent.VK_1) difficulty = "Easy";
+            else if (key == KeyEvent.VK_2) difficulty = "Medium";
+            else if (key == KeyEvent.VK_3) difficulty = "Hard";
+            initializeGame();
+        } else if (!inGame && key == KeyEvent.VK_ENTER) {
+            showStartScreen = true;
+            repaint();
+        }
+
+        if (key == KeyEvent.VK_LEFT && !right) {
+            left = true; up = down = false;
+        } else if (key == KeyEvent.VK_RIGHT && !left) {
+            right = true; up = down = false;
+        } else if (key == KeyEvent.VK_UP && !down) {
+            up = true; left = right = false;
+        } else if (key == KeyEvent.VK_DOWN && !up) {
+            down = true; left = right = false;
+        }
+    }
+
+    @Override public void keyReleased(KeyEvent e) {}
+
+    // === GETTERY I SETTERY ===
+    public void setSnakeColor(Color color) { this.snakeColor = color; }
+    public void setAppleColor(Color color) { this.appleColor = color; }
+    public void setBackgroundColor(Color color) { this.backgroundColor = color; setBackground(color); }
+    public void setObstacleColor(Color color) { this.obstacleColor = color; }
+    public void setDifficulty(String difficulty) { this.difficulty = difficulty; }
+    public void setDelay(int delay) { this.delay = delay; }
+    public void setDotSize(int size) { this.dotSize = size; }
+    public void setBoardSize(int width, int height) { this.width = width; this.height = height; this.setPreferredSize(new Dimension(width, height)); }
+
+    public Color getSnakeColor() { return snakeColor; }
+    public Color getAppleColor() { return appleColor; }
+    public Color getBackgroundColor() { return backgroundColor; }
+    public Color getObstacleColor() { return obstacleColor; }
+    public String getDifficulty() { return difficulty; }
+    public int getDelay() { return delay; }
+    public int getDotSize() { return dotSize; }
+    public int getBoardWidth() { return width; }
+    public int getBoardHeight() { return height; }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Snake Game");
+        SnakeGame game = new SnakeGame();
+        frame.add(game);
+        frame.pack();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+}
