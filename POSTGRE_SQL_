@@ -1,0 +1,292 @@
+/*==============================================================*/
+/* DBMS name:      PostgreSQL 9.x                               */
+/* Created on:     24.04.2025 19:25:53                          */
+/*==============================================================*/
+
+
+drop index Genres_PK;
+
+drop table Genres;
+
+drop index Relationship_5_FK;
+
+drop index Relationship_4_FK;
+
+drop index Movie_Genres_PK;
+
+drop table Movie_Genres;
+
+drop index Relationship_8_FK;
+
+drop index Movie_Language_PK;
+
+drop table Movie_Language;
+
+drop index Relationship_3_FK;
+
+drop index Relationship_2_FK;
+
+drop index Movie_People_PK;
+
+drop table Movie_People;
+
+drop index Movies_PK;
+
+drop table Movies;
+
+drop index People_PK;
+
+drop table People;
+
+drop index User_PK;
+
+drop table "User";
+
+drop index Relationship_7_FK;
+
+drop index Relationship_6_FK;
+
+drop index User_Movie_PK;
+
+drop table User_Movie;
+
+/*==============================================================*/
+/* Table: Genres                                                */
+/*==============================================================*/
+create table Genres (
+   Genre_id             INT4                 not null,
+   Genres_name          VARCHAR(50)          not null,
+   constraint PK_GENRES primary key (Genre_id)
+);
+
+/*==============================================================*/
+/* Index: Genres_PK                                             */
+/*==============================================================*/
+create unique index Genres_PK on Genres (
+Genre_id
+);
+
+/*==============================================================*/
+/* Table: Movie_Genres                                          */
+/*==============================================================*/
+create table Movie_Genres (
+   Movie_genres_id      INT4                 not null,
+   Genre_id             INT4                 null,
+   Movie_id             INT4                 null,
+   constraint PK_MOVIE_GENRES primary key (Movie_genres_id)
+);
+
+/*==============================================================*/
+/* Index: Movie_Genres_PK                                       */
+/*==============================================================*/
+create unique index Movie_Genres_PK on Movie_Genres (
+Movie_genres_id
+);
+
+/*==============================================================*/
+/* Index: Relationship_4_FK                                     */
+/*==============================================================*/
+create  index Relationship_4_FK on Movie_Genres (
+Genre_id
+);
+
+/*==============================================================*/
+/* Index: Relationship_5_FK                                     */
+/*==============================================================*/
+create  index Relationship_5_FK on Movie_Genres (
+Movie_id
+);
+
+/*==============================================================*/
+/* Table: Movie_Language                                        */
+/*==============================================================*/
+create table Movie_Language (
+   Movie_language_id    INT4                 not null,
+   Movie_id             INT4                 null,
+   Language             VARCHAR(30)          not null,
+   constraint PK_MOVIE_LANGUAGE primary key (Movie_language_id)
+);
+
+/*==============================================================*/
+/* Index: Movie_Language_PK                                     */
+/*==============================================================*/
+create unique index Movie_Language_PK on Movie_Language (
+Movie_language_id
+);
+
+/*==============================================================*/
+/* Index: Relationship_8_FK                                     */
+/*==============================================================*/
+create  index Relationship_8_FK on Movie_Language (
+Movie_id
+);
+
+/*==============================================================*/
+/* Table: Movie_People                                          */
+/*==============================================================*/
+create table Movie_People (
+   Movie_people_id      INT4                 not null,
+   People_id            INT4                 null,
+   Movie_id             INT4                 null,
+   Role                 VARCHAR(30)          not null,
+   constraint PK_MOVIE_PEOPLE primary key (Movie_people_id)
+);
+
+/*==============================================================*/
+/* Index: Movie_People_PK                                       */
+/*==============================================================*/
+create unique index Movie_People_PK on Movie_People (
+Movie_people_id
+);
+
+/*==============================================================*/
+/* Index: Relationship_2_FK                                     */
+/*==============================================================*/
+create  index Relationship_2_FK on Movie_People (
+People_id
+);
+
+/*==============================================================*/
+/* Index: Relationship_3_FK                                     */
+/*==============================================================*/
+create  index Relationship_3_FK on Movie_People (
+Movie_id
+);
+
+/*==============================================================*/
+/* Table: Movies                                                */
+/*==============================================================*/
+create table Movies (
+   Movie_id             INT4                 not null,
+   Title                VARCHAR(120)         not null,
+   Year                 INT4                 not null,
+   Rated                VARCHAR(30)          not null,
+   Released             DATE                 not null,
+   Runtime              INT4                 not null,
+   Plot                 VARCHAR(1024)        not null,
+   Country              VARCHAR(50)          not null,
+   Awards               VARCHAR(50)          not null,
+   Poster               CHAR(200)            not null,
+   "Movie Database"     FLOAT30              not null,
+   "Rotten Tomatoes"    FLOAT30              not null,
+   Metacritic           FLOAT30              not null,
+   Metascore            FLOAT30              not null,
+   imdbRating           FLOAT30              not null,
+   imdbVotes            FLOAT30              not null,
+   imdbID               VARCHAR(30)          not null,
+   Type                 VARCHAR(30)          not null,
+   BoxOffice            VARCHAR(50)          not null,
+   Response             VARCHAR(30)          not null,
+   constraint PK_MOVIES primary key (Movie_id)
+);
+
+/*==============================================================*/
+/* Index: Movies_PK                                             */
+/*==============================================================*/
+create unique index Movies_PK on Movies (
+Movie_id
+);
+
+/*==============================================================*/
+/* Table: People                                                */
+/*==============================================================*/
+create table People (
+   People_id            INT4                 not null,
+   People_name          VARCHAR(80)          not null,
+   constraint PK_PEOPLE primary key (People_id)
+);
+
+/*==============================================================*/
+/* Index: People_PK                                             */
+/*==============================================================*/
+create unique index People_PK on People (
+People_id
+);
+
+/*==============================================================*/
+/* Table: "User"                                                */
+/*==============================================================*/
+create table "User" (
+   User_id              INT4                 not null,
+   First_name           VARCHAR(30)          not null,
+   Last_name            VARCHAR(30)          not null,
+   E_Mail               VARCHAR(50)          not null,
+   Username             VARCHAR(30)          not null,
+   PasswordHash         VARCHAR(40)          not null,
+   CreatedAt            DATE                 not null,
+   constraint PK_USER primary key (User_id)
+);
+
+/*==============================================================*/
+/* Index: User_PK                                               */
+/*==============================================================*/
+create unique index User_PK on "User" (
+User_id
+);
+
+/*==============================================================*/
+/* Table: User_Movie                                            */
+/*==============================================================*/
+create table User_Movie (
+   User_movie_id        INT4                 not null,
+   User_id              INT4                 null,
+   Movie_id             INT4                 null,
+   User_rated           VARCHAR(30)          null,
+   constraint PK_USER_MOVIE primary key (User_movie_id)
+);
+
+/*==============================================================*/
+/* Index: User_Movie_PK                                         */
+/*==============================================================*/
+create unique index User_Movie_PK on User_Movie (
+User_movie_id
+);
+
+/*==============================================================*/
+/* Index: Relationship_6_FK                                     */
+/*==============================================================*/
+create  index Relationship_6_FK on User_Movie (
+User_id
+);
+
+/*==============================================================*/
+/* Index: Relationship_7_FK                                     */
+/*==============================================================*/
+create  index Relationship_7_FK on User_Movie (
+Movie_id
+);
+
+alter table Movie_Genres
+   add constraint FK_MOVIE_GE_RELATIONS_GENRES foreign key (Genre_id)
+      references Genres (Genre_id)
+      on delete restrict on update restrict;
+
+alter table Movie_Genres
+   add constraint FK_MOVIE_GE_RELATIONS_MOVIES foreign key (Movie_id)
+      references Movies (Movie_id)
+      on delete restrict on update restrict;
+
+alter table Movie_Language
+   add constraint FK_MOVIE_LA_RELATIONS_MOVIES foreign key (Movie_id)
+      references Movies (Movie_id)
+      on delete restrict on update restrict;
+
+alter table Movie_People
+   add constraint FK_MOVIE_PE_RELATIONS_PEOPLE foreign key (People_id)
+      references People (People_id)
+      on delete restrict on update restrict;
+
+alter table Movie_People
+   add constraint FK_MOVIE_PE_RELATIONS_MOVIES foreign key (Movie_id)
+      references Movies (Movie_id)
+      on delete restrict on update restrict;
+
+alter table User_Movie
+   add constraint FK_USER_MOV_RELATIONS_USER foreign key (User_id)
+      references "User" (User_id)
+      on delete restrict on update restrict;
+
+alter table User_Movie
+   add constraint FK_USER_MOV_RELATIONS_MOVIES foreign key (Movie_id)
+      references Movies (Movie_id)
+      on delete restrict on update restrict;
