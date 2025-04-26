@@ -8,7 +8,7 @@ const Watched = ({ filteredMovies }) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('https://black-eagle-backend.onrender.com/movies?user_id=1')
+        fetch('https://backend-g7rx.onrender.com/movies?userId=1')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Błąd przy pobieraniu danych');
