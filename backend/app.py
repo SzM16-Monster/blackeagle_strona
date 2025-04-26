@@ -17,7 +17,7 @@ load_dotenv()
 OMDB_API_KEY = os.getenv('OMDB_API_KEY', '5da8ff81')
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://frontend-eta-eosin-54.vercel.app"]}})
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://frontend-6led4jy72-feste790s-projects.vercel.app/watched"]}})
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'postgresql://postgres:haslo123@localhost:5432/black_eagle_db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
