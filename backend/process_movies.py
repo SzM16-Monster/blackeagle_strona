@@ -10,11 +10,11 @@ from urllib.parse import urlparse
 DATABASE_URL = 'postgresql://feste790_user:8OrKT0R6yqZrETJ1fy4hMB486B9h9Txk@dpg-d06h50ili9vc73ecgr10-a.frankfurt-postgres.render.com/black_eagle_db' # Z Rendera
 parsed_url = urlparse(DATABASE_URL)
 DB_CONFIG = {
-    'dbname': parsed_url.path[1:],  # Usuwa początkowe '/'
+    'dbname': parsed_url.path[1:],
     'user': parsed_url.username,
     'password': parsed_url.password,
     'host': parsed_url.hostname,
-    'port': parsed_url.port
+    #'port': parsed_url.port
 }
 OMDB_API_KEY = '5da8ff81'
 CSV_FILE = 'movies_action_horror.csv'
