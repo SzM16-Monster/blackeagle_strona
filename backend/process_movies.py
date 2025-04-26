@@ -4,14 +4,17 @@ import requests
 from urllib.parse import quote
 from datetime import datetime
 import logging
+from urllib.parse import urlparse
 
 # Konfiguracja
+DATABASE_URL = 'postgresql://feste790_user:8OrKT0R6yqZrETJ1fy4hMB486B9h9Txk@dpg-d06h50ili9vc73ecgr10-a.frankfurt-postgres.render.com/black_eagle_db' # Z Rendera
+parsed_url = urlparse(DATABASE_URL)
 DB_CONFIG = {
-    'dbname': 'black_eagle_db',
-    'user': 'postgres',
-    'password': 'haslo123',
-    'host': 'localhost',
-    'port': '5432'
+    'dbname': parsed_url.path[1:],  # Usuwa początkowe '/'
+    'user': parsed_url.username,
+    'password': parsed_url.password,
+    'host': parsed_url.hostname,
+    'port': parsed_url.port
 }
 OMDB_API_KEY = '5da8ff81'
 CSV_FILE = 'movies_action_horror.csv'
