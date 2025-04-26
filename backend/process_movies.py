@@ -219,7 +219,7 @@ def insert_user_movie(conn, user_id, movie_id, watched_date):
         if not cursor.fetchone():
             cursor.execute("""
                 INSERT INTO appuser_movie (user_movie_id, appuser_id, movie_id, user_rating, watched_date)
-                VALUES (nextval('appuser_movie_user_movie_id_seq'), %s, %s, %s, %s)
+                VALUES (nextval('user_movie_user_movie_id_seq'), %s, %s, %s, %s)
             """, (user_id, movie_id, None, watched_date))
             conn.commit()
             logging.info(f"Dodano powiazanie appuser_movie (appuser_id: {user_id}, movie_id: {movie_id})")
