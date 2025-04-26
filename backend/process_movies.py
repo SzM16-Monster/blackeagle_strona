@@ -6,7 +6,7 @@ from datetime import datetime
 import logging
 
 # Konfiguracja
-DATABASE_URL = 'postgresql://feste790_user:abc123@pg-host:5432/black_eagle_db'  # Z Rendera
+DATABASE_URL = 'postgresql://feste790_user:8OrKT0R6yqZrETJ1fy4hMB486B9h9Txk@dpg-d06h50ili9vc73ecgr10-a/black_eagle_db'  # Z Rendera
 parsed_url = urlparse(DATABASE_URL)
 DB_CONFIG = {
     'dbname': parsed_url.path[1:],
