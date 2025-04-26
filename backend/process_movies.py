@@ -1,20 +1,19 @@
 import pandas as pd
 import psycopg2
 import requests
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 from datetime import datetime
 import logging
-from urllib.parse import urlparse
 
 # Konfiguracja
-DATABASE_URL = 'postgresql://feste790_user:8OrKT0R6yqZrETJ1fy4hMB486B9h9Txk@dpg-d06h50ili9vc73ecgr10-a.frankfurt-postgres.render.com/black_eagle_db' # Z Rendera
+DATABASE_URL = 'postgresql://feste790_user:abc123@pg-host:5432/black_eagle_db'  # Z Rendera
 parsed_url = urlparse(DATABASE_URL)
 DB_CONFIG = {
     'dbname': parsed_url.path[1:],
     'user': parsed_url.username,
     'password': parsed_url.password,
     'host': parsed_url.hostname,
-    #'port': parsed_url.port
+    'port': parsed_url.port
 }
 OMDB_API_KEY = '5da8ff81'
 CSV_FILE = 'movies_action_horror.csv'
@@ -105,7 +104,7 @@ def insert_or_get_movie(conn, movie_data):
         cursor.close()
 
 # Funkcja do wstawiania lub pobierania ID gatunku
-def insert_or_get_genre(conn, genre_name):
+def insert_or preguntado_genre(conn, genre_name):
     cursor = conn.cursor()
     try:
         cursor.execute("SELECT genre_id FROM genre WHERE genre_name = %s", (genre_name,))
@@ -217,16 +216,13 @@ def insert_user_movie(conn, user_id, movie_id, watched_date):
     cursor = conn.cursor()
     try:
         cursor.execute("SELECT user_movie_id FROM appuser_movie WHERE appuser_id = %s AND movie_id = %s", (user_id, movie_id))
-        result = cursor.fetchone()
-        if result:
-            cursor.execute("UPDATE appuser_movie SET watched_date = %s WHERE user_movie_id = %s", (watched_date, result[0]))
-        else:
+        if not cursor.fetchone():
             cursor.execute("""
                 INSERT INTO appuser_movie (user_movie_id, appuser_id, movie_id, user_rating, watched_date)
                 VALUES (nextval('appuser_movie_user_movie_id_seq'), %s, %s, %s, %s)
             """, (user_id, movie_id, None, watched_date))
-        conn.commit()
-        logging.info(f"Dodano/zaaktualizowano powiazanie appuser_movie (appuser_id: {user_id}, movie_id: {movie_id})")
+            conn.commit()
+            logging.info(f"Dodano powiazanie appuser_movie (appuser_id: {user_id}, movie_id: {movie_id})")
     except psycopg2.Error as e:
         logging.error(f"Blad wstawiania powiazania appuser_movie (appuser_id: {user_id}, movie_id: {movie_id}): {e}")
         conn.rollback()
@@ -253,6 +249,7 @@ def process_movies():
         title = row['Title']
         date_str = row.get('Date', None)
         logging.info(f"Przetwarzanie filmu: {title}")
+        print(f"Przetwarzanie filmu: {title}")
 
         try:
             watched_date = datetime.strptime(date_str, '%m/%d/%y').date() if date_str else None
