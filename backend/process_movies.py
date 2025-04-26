@@ -14,7 +14,7 @@ DB_CONFIG = {
     'port': '5432'
 }
 OMDB_API_KEY = '5da8ff81'
-CSV_FILE = 'NetflixViewingHistory.csv'
+CSV_FILE = 'movies_action_horror.csv'
 USER_ID = 1 
 LOG_FILE = 'import.log'
 
