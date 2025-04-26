@@ -104,7 +104,7 @@ def insert_or_get_movie(conn, movie_data):
         cursor.close()
 
 # Funkcja do wstawiania lub pobierania ID gatunku
-def insert_or preguntado_genre(conn, genre_name):
+def insert_or_get_genre(conn, genre_name):
     cursor = conn.cursor()
     try:
         cursor.execute("SELECT genre_id FROM genre WHERE genre_name = %s", (genre_name,))
