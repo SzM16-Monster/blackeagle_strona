@@ -10,7 +10,7 @@ function App() {
     const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
-        fetch('https://backend-g7rx.onrender.com/movies')
+        fetch('https://backend-g7rx.onrender.com/movies?user_id=${userId}')
             .then((res) => res.json())
             .then((data) => setMovies(data));
     }, []);
