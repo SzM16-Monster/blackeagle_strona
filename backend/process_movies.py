@@ -237,10 +237,13 @@ def insert_user_movie(conn, user_id, movie_id, watched_date):
 def process_movies():
     try:
         df = pd.read_csv(CSV_FILE)
+        print(f"Znaleziono {len(df)} filmów w {CSV_FILE}")
     except FileNotFoundError:
+        print(f"Plik CSV nie znaleziony: {CSV_FILE}")
         logging.error(f"Plik CSV nie znaleziony: {CSV_FILE}")
         return
     except pd.errors.EmptyDataError:
+        print(f"Plik CSV jest pusty: {CSV_FILE}")
         logging.error(f"Plik CSV jest pusty: {CSV_FILE}")
         return
 
