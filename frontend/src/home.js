@@ -7,7 +7,7 @@ function Home({ filteredMovies }) {
                 filteredMovies.map((movie, i) => (
                     <div key={movie.movie_id} className="movie-card">
                         <img
-                            src={movie.poster || 'https://via.placeholder.com/200x300'}
+                            src={movie.poster || 'https://placehold.co/200x300'}
                             alt={movie.title}
                             className="movie-poster"
                         />
