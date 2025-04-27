@@ -22,7 +22,7 @@ CORS(app, resources={r"/*": {"origins": [
     "https://moj-frontend.vercel.app",
     "https://frontend-6led4jy72-feste790s-projects.vercel.app",
     "https://frontend-git-main-feste790s-projects.vercel.app",
-    "https://frontend-feste790s-projects.vercel.app/"
+    "https://frontend-feste790s-projects.vercel.app"
 ]}})
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'postgresql://postgres:haslo123@localhost:5432/black_eagle_db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
