@@ -143,16 +143,70 @@ def get_movie_from_omdb(title):
         return None
 
 # Endpoint do zwracania listy filmów użytkownika
-@app.route('/movies', methods=['GET'])
-def get_movies():
+@app.route('/movies_and_series', methods=['GET'])
+def get_movies_and_series():
     try:
         user_id = request.args.get('user_id', 1, type=int)
         user_movies = AppUser_Movie.query.filter_by(appuser_id=user_id).all()
         movies = [db.session.get(Movie, um.movie_id).to_dict() for um in user_movies]
         return jsonify(movies), 200
     except Exception as e:
+        logging.error(f"Błąd pobierania filmów i seriali: {e}")
+        return jsonify({"error": str(e)}), 500
+
+        # Endpoint do zwracania listy filmów użytkownika
+@app.route('/movies', methods=['GET'])
+def get_movies():
+    try:
+        user_id = request.args.get('user_id', 1, type=int)
+        user_movies = (
+            AppUser_Movie.query
+            .join(Movie, AppUser_Movie.movie_id == Movie.movie_id)
+            .filter(AppUser_Movie.appuser_id == user_id, Movie.movie_type == 'movie')
+            .all()
+        )
+        series = [db.session.get(Movie, um.movie_id).to_dict() for um in user_movies]
+        return jsonify(series), 200
+    except Exception as e:
         logging.error(f"Błąd pobierania filmów: {e}")
         return jsonify({"error": str(e)}), 500
+
+    # Endpoint do zwracania listy seriali użytkownika
+@app.route('/series', methods=['GET'])
+def get_series():
+    try:
+        user_id = request.args.get('user_id', 1, type=int)
+        user_movies = (
+            AppUser_Movie.query
+            .join(Movie, AppUser_Movie.movie_id == Movie.movie_id)
+            .filter(AppUser_Movie.appuser_id == user_id, Movie.movie_type == 'series')
+            .all()
+        )
+        series = [db.session.get(Movie, um.movie_id).to_dict() for um in user_movies]
+        return jsonify(series), 200
+    except Exception as e:
+        logging.error(f"Błąd pobierania seriali: {e}")
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/horrors', methods=['GET'])
+def get_horrors():
+    try:
+        user_id = request.args.get('user_id', 1, type=int)
+        genre = request.args.get('genre', 'Horror', type=str)
+        user_movies = (
+            AppUser_Movie.query
+            .join(Movie, AppUser_Movie.movie_id == Movie.movie_id)
+            .join(Movie_Genre, Movie.movie_id == Movie_Genre.movie_id)
+            .join(Genre, Movie_Genre.genre_id == Genre.genre_id)
+            .filter(AppUser_Movie.appuser_id == user_id, Genre.genre_name == genre)
+            .all()
+        )
+        horrors = [db.session.get(Movie, um.movie_id).to_dict() for um in user_movies]
+        return jsonify(horrors, 200)
+    except Exception as e:
+        logging.error(f"Błąd pobierania horrorów: {e}")
+        return jsonify({"error": str(e)}), 500
+
 
 # Endpoint do wgrywania CSV
 @app.route('/upload-csv', methods=['POST'])
