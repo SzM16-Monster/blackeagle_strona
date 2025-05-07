@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import { Link } from 'react-router-dom';
+
 //login haslo
 
 function Login() {
@@ -22,7 +24,9 @@ function Login() {
                             className="submitButtonLogin"
                             value="Zaloguj"
                         />
-                        <p>Załóż konto: miejsce na link do rejestracji</p>
+                        <p className="linkreg">
+                            Załóż konto: <Link to="/register">Rejestracja</Link>
+                        </p>
                     </div>
             </div>
     );
