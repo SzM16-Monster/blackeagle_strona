@@ -419,3 +419,83 @@ body {
     font-size: 0.9rem;
     color: #bbb;
 }
+
+/* REGISTER | LOGIN  */
+
+.register-page,
+.login-page {
+    background: linear-gradient(90deg, #000000 0%, #1a1a1a 40%, #262626 100%);
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.center {
+    width: 450px;
+    height: 100%;
+    background-color: #141414;
+    align-items: center;
+}
+
+.login,
+.password,
+.email {
+    margin: 20px;
+    width: 400px;
+    height: 50px;
+    border: hidden;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    background-color: #1a1a1a;
+    color: #f5c518;
+    border-radius: 4px;
+}
+
+.login::placeholder {
+    color: #f5c518;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.login:focus {
+    outline: none;
+    background-color: #222;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    color: #fff;
+}
+
+.login:hover {
+    outline: none;
+    background-color: #222;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    color: #fff;
+}
+
+.formTitle{
+    width: 400px;
+    height: 50px;
+    justify-self: center;
+    color: #f5c518;
+}
+
+.submitButtonLogin {
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+    background-color: transparent;
+    border: hidden;
+    color: #f5c518;
+    font-weight: 500;
+    font-size: larger;
+    border-radius: 4px;
+}
+
+.submitButtonLogin:hover {
+    background-color: transparent;
+    color: rgb(255, 217, 0);
+    transform: translateY(-1px);
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
