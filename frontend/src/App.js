@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Watched from './watched';
 import Header from './header';
+import Footer from './footer';
 import Home from './home';
 import './App.css';
 
@@ -31,6 +32,9 @@ function App() {
                 <Route path="/" element={<Home filteredMovies={filteredMovies} />} />
                 <Route path="/watched" element={<Watched filteredMovies={filteredMovies} />} />
             </Routes>
+
+            <Footer
+            />
         </Router>
     );
 }

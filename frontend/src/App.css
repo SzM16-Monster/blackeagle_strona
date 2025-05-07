@@ -39,7 +39,7 @@ body {
 .search-button {
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #e50914; /* Czerwony jak Netflix */
+    background-color: #e50914; 
     color: white;
     border: none;
     border-radius: 4px;
@@ -50,187 +50,55 @@ body {
     background-color: #f40612;
 }
 
-.movie-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 20px;
-    max-width: 1800px;
-    margin: 0 auto;
-    padding: 50px 10px;
-}
-@media (max-width: 1300px) {
-    .movie-grid {
-        grid-template-columns: repeat(5, 1fr);
-    }
-}
-@media (max-width: 1000px) {
-    .movie-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-@media (max-width: 600px) {
-    .movie-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.movie-slider {
-    padding: 20px;
-    border-radius: 12px;
-}
-
-.movieTitle{
-    text-align: center;
-}
-
-.movie-poster-div{
-    object-fit: cover;
-}
-
-.movie-card {
-    padding: 10px;
-    text-align: center;
-    color: white;
-}
-
-.movie-card:hover {
-    transform: scale(1.05);
-}
-
-.movie-poster {
+/* ============= COVERFLOW =============  */
+.coverflowSwiper {
     width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-    transition: transform 0.3s;
-}
+    padding-top: 20px !important;
+} 
 
-.movie-poster:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-}
-
-.movie-card h3 {
-    margin: 10px;
-    font-size: 1.2rem;
-}
-
-.movie-card p {
-    margin: 0 10px 10px;
-    color: #aaa;
-}
-
-.watched-container {
-    background-color: #141414;
-    color: white;
-    min-height: 100vh;
-}
-
-.movie-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.movie-item {
-    display: flex;
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.movie-poster {
-    height: auto;
-    object-fit: cover;
-}
-
-.movie-details {
-    padding: 15px;
-    flex: 1;
-}
-
-.movie-details h2 {
-    margin-top: 0;
-    font-size: 1.5rem;
-}
-
-.movie-description {
-    color: #ccc;
-    margin-top: 10px;
-}
-
-/* ------------- SLIDE -------------  */
-.hero {
-    position: relative;
-    height: 50vh;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    border-radius: 20px;
-}
-
-.hero::before,
-.gradient {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg,
-            rgba(0, 0, 0, 0.8) 0%,
-            rgba(0, 0, 0, 0.3) 40%,
-            rgba(0, 0, 0, 0) 75%);
-    border-radius: 20px;
-}
-
-/* TEXT ON SLIDER */
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-    margin-left: 5%;
-    max-width: 40%;
+.carousel-item {
+    text-align: center;
     color: #fff;
+    max-width: 300px;
+    margin: 0 auto;
 }
 
-.title {
-    font-size: clamp(2rem, 4vw, 4rem);
-    margin: 0.5em 0;
-    line-height: 1.1;
-    text-transform: uppercase;
-}
-
-.meta {
-    opacity: 0.85;
-    margin-bottom: 1.5rem;
-}
-
-.cta {
-    padding: 0.8rem 2.2rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 4px;
-    background: #fff;
-    color: #000;
+.carousel-poster {
+    width: 300px;
+    height: 475px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    user-select: none;
+    transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
     cursor: pointer;
 }
 
-/* KROPKI */
-
-.movie-slider {
-    position: relative;
-}
-.slick-dots{
-    bottom: -40px;
-}
-.slick-dots li button::before{
-    color: #ffd700;
-}
-.slick-dots li.slick-active button:before{
-    color: #f5e27a;
+.carousel-title {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
 }
 
-/* HEADER */
+.carousel-meta {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.carousel-poster:hover {
+    transform: scale(1.05);
+    border: 2px solid #f5c518;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    cursor: pointer;
+}
+
+.swiper-3d{
+    padding-top: 10px;
+}
+
+/* ============= HEADER ============= */
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -295,7 +163,7 @@ body {
     margin-right: 10px;
 }
 
-/* SEARCH BAR */
+/* ============= SEARCH BAR ============= */
 
 .search-header {
     padding: 14px 16px;
@@ -328,7 +196,7 @@ body {
     color: #fff;
 }
 
-/* IKONKI */
+/* ============= IKONKI ============= */
 
 .icon-CircleUserRound{
     color: #ffd700;
@@ -354,10 +222,200 @@ body {
     height: 43px;
 }
 
+.social-icons a {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: #f5c518;
+}
 
+/* ============= WATCHED ============= */
 
-/* WATCHED */
-.header_text_watched{
+/* ============= FOOTER ============= */
+.footer{
+    background: linear-gradient(#262626 100%);
+    color: #ffd700;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0rem 1rem;
+    text-align: justify;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-column h4 {
+    color: #f5c518;
+    margin-bottom: 0.5rem;
+}
+
+.footer-column p,
+.footer-column a,
+.footer-column li {
+    color: #ccc;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+    color: #f5c518;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.8rem;
+    padding-bottom: 1rem;
+    color: #888;
+}
+.AboutUsText{
+    padding: 0px 50px 0px 0px;
+}
+
+/* ============= SLIDERS MAIN ============= */
+
+.category-section {
+    margin: 3rem 0;
+    padding-left: 1rem;
+    user-select: none;
+}
+
+.category-title {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    user-select: none;
+}
+
+.movie-card {
+    text-align: center;
+    user-select: none;
+}
+
+.movie-poster {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 200px;
+    height: 300px;
+    border-radius: 8px;
+    user-select: none;
+    transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.movie-poster:hover {
+    transform: scale(1.05);
+    border: 2px solid #f5c518;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    cursor: pointer;
+}
+
+.movieTitle {
+    color: #fff;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.swiper-wrapper {
+    padding-top: 10px;
+}
+
+/* === OBEJRZANE FILMY === */
+
+.watched-container {
+    padding: 1rem 1rem;
+    margin: 0 auto;
+}
+
+.header_text_watched {
+    font-size: 2rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
+.movie-list-watched {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.movie-item-watched {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding-left: 30px;
+}
+
+.movie-item-watched:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 16px rgba(255, 215, 0, 0.25);
+}
+
+.movie-poster-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.movie-poster-watched {
+    width: 150px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.movie-item-watched:hover .movie-poster-watched {
+    transform: scale(1.03);
+    border: 2px solid #f5c518;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.movie-details-watched {
+    flex: 1;
+    color: #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.movie-details-watched h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.movie-details-watched p {
+    margin: 0.3rem 0;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+.movie-description-watched {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #bbb;
+}

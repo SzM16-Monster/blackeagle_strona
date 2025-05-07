@@ -1,67 +1,180 @@
 import React from 'react';
-import Slider from 'react-slick';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow, Navigation, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/navigation';
+import './App.css'; 
 
 function Home({ filteredMovies }) {
-    const settings = {
-        infinite: true,
-        autoplay: true,
-        autoplaySpeed: 6000,
-        fade: true,
-        dots: true,
-        arrows: false,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        customPaging: i => (
-            <button
-                type="button"
-                aria-label={`Przejdź do slajdu ${i + 1}`}
-                className="dot-btn"
-            />
-        ),
-        appendDots: dots => (
-            <ul className="dots-container">{dots}</ul>
-        )
-    };
 
     return (
         <div className="movie-slider">
             {filteredMovies.length > 0 ? (
                 <>
-                    <Slider {...settings}>
-                        {filteredMovies.map(movie => (
-                            <div key={movie.movie_id}>
-                                <div
-                                    className="hero"
-                                    style={{ backgroundImage: `url(${movie.backdrop || movie.poster})` }}
-                                >
-                                    <div className="gradient" />
-                                    <div className="hero-content">
-                                        <img src="/searchlight.svg" className="studio" alt="" />
-                                        <h2 className="title">{movie.title}</h2>
-                                        <p className="meta">
-                                            {movie.prod_year && <>{movie.prod_year}</>}
-                                            {movie.rated && <>&nbsp;• {movie.rated}</>}
-                                            {movie.genre && movie.genre.length > 0 && <>&nbsp;• {movie.genre.join(', ')}</>}
-                                            {movie.runtime && <>&nbsp;• {movie.runtime} min</>}
-                                            {movie.country && <>&nbsp;• {movie.country}</>}
-                                        </p>
-                                    </div>
+                    <Swiper
+                        loop={true}
+                        autoHeight = {true}
+                        slidesPerView = {3}
+                        spaceBetween = {10}
+                        breakpoints={{
+                            320: { slidesPerView: 2, spaceBetween: 20 },
+                            480: { slidesPerView: 3, spaceBetween: 30 },
+                            640: { slidesPerView: 4, spaceBetween: 40 }}}
+                        centeredSlides={true}
+                        effect = "coverflow"
+                        coverflowEffect={{
+                            rotate: 0,
+                            slideShadows: false,
+                            depth: 300,
+                            stretch: 0,
+                            }}
+                        autoplay={{
+                            delay: 3000,
+                            disableOnInteraction: false,
+                        }}
+                        modules={[EffectCoverflow, Navigation, Autoplay]}
+                        className="coverflowSwiper"
+                    >
+                        {filteredMovies.map((movie) => (
+                            <SwiperSlide key={`slide-${movie.movie_id}`}>
+                                <div className="carousel-item">
+                                    <img
+                                        src={movie.poster || 'https://placehold.co/200x300'}
+                                        alt={movie.title}
+                                        className="carousel-poster"
+                                    />
+                                    <h3 className="carousel-title">{movie.title}</h3>
+                                    <p className="carousel-meta">{movie.prod_year}</p>
                                 </div>
-                            </div>
+                            </SwiperSlide>
                         ))}
-                    </Slider>
-                    <div className="movie-grid">
-                        {filteredMovies.map(movie => (
-                            <div key={movie.movie_id} className="movie-card">
-                                <img
-                                    src={movie.poster || 'https://placehold.co/200x300'}
-                                    alt={movie.title}
-                                    className="movie-poster"
-                                />
-                                <h3 className="movieTitle">{movie.title}</h3>
-                                <p>{movie.prod_year}</p>
+                    </Swiper>
+
+                    <div className="categories-slider">
+                        <div className="category-section">
+                            <h2 className="category-title">Filmy</h2>
+                            <Swiper
+                                loop={true}
+                                spaceBetween={15}
+                                slidesPerView={8}
+                                navigationmodules={[Navigation]}
+                            >
+                                {filteredMovies.map((movie) => (
+                                    <SwiperSlide key={movie.movie_id}>
+                                        <div className="movie-card">
+                                            <img
+                                                src={movie.poster || 'https://placehold.co/200x300'}
+                                                alt={movie.title}
+                                                className="movie-poster"
+                                            />
+                                            {/* <h3 className="movieTitle">{movie.title}</h3>
+                                            <p>{movie.prod_year}</p> */}
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                    </div>
+                    <div className="categories-slider">
+                        <div className="category-section">
+                            <h2 className="category-title">Filmy</h2>
+                            <Swiper
+                                loop={true}
+                                spaceBetween={15}
+                                slidesPerView={8}
+                                navigationmodules={[Navigation]}
+                            >
+                                {filteredMovies.map((movie) => (
+                                    <SwiperSlide key={movie.movie_id}>
+                                        <div className="movie-card">
+                                            <img
+                                                src={movie.poster || 'https://placehold.co/200x300'}
+                                                alt={movie.title}
+                                                className="movie-poster"
+                                            />
+                                            {/* <h3 className="movieTitle">{movie.title}</h3>
+                                            <p>{movie.prod_year}</p> */}
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                    </div>
+                    <div className="categories-slider">
+                        <div className="category-section">
+                            <h2 className="category-title">Filmy</h2>
+                            <Swiper
+                                loop={true}
+                                spaceBetween={15}
+                                slidesPerView={8}
+                                navigationmodules={[Navigation]}
+                            >
+                                {filteredMovies.map((movie) => (
+                                    <SwiperSlide key={movie.movie_id}>
+                                        <div className="movie-card">
+                                            <img
+                                                src={movie.poster || 'https://placehold.co/200x300'}
+                                                alt={movie.title}
+                                                className="movie-poster"
+                                            />
+                                            {/* <h3 className="movieTitle">{movie.title}</h3>
+                                            <p>{movie.prod_year}</p> */}
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                    </div>
+                    <div className="categories-slider">
+                        <div className="category-section">
+                            <h2 className="category-title">Filmy</h2>
+                            <Swiper
+                                loop={true}
+                                spaceBetween={15}
+                                slidesPerView={8}
+                                navigationmodules={[Navigation]}
+                            >
+                                {filteredMovies.map((movie) => (
+                                    <SwiperSlide key={movie.movie_id}>
+                                        <div className="movie-card">
+                                            <img
+                                                src={movie.poster || 'https://placehold.co/200x300'}
+                                                alt={movie.title}
+                                                className="movie-poster"
+                                            />
+                                            {/* <h3 className="movieTitle">{movie.title}</h3>
+                                            <p>{movie.prod_year}</p> */}
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        </div>
+                    </div>
+                    <div className="categories-slider">
+                            <div className="category-section">
+                                <h2 className="category-title">Seriale</h2>
+                                <Swiper
+                                    loop={true}
+                                    spaceBetween={15}
+                                    slidesPerView={8}
+                                    navigationmodules={[Navigation]}
+                                >
+                                    {filteredMovies.map((movie) => (
+                                        <SwiperSlide key={movie.movie_id}>
+                                            <div className="movie-card">
+                                                <img
+                                                    src={movie.poster || 'https://placehold.co/200x300'}
+                                                    alt={movie.title}
+                                                    className="movie-poster"
+                                                />
+                                                {/* <h3 className="movieTitle">{movie.title}</h3>
+                                                <p>{movie.prod_year}</p> */}
+                                            </div>
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
                             </div>
-                        ))}
                     </div>
                 </>
             ) : (
