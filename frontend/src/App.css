@@ -440,9 +440,7 @@ body {
     align-items: center;
 }
 
-.login,
-.password,
-.email {
+.login, .password, .email, .imie, .nazwisko  {
     margin: 20px;
     width: 400px;
     height: 50px;
@@ -474,6 +472,85 @@ body {
     color: #fff;
 }
 
+.imie::placeholder {
+    color: #ffd700;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.imie:focus {
+    outline: none;
+    background-color: #222;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    color: #fff;
+}
+
+.imie:hover {
+    outline: none;
+    background-color: #222;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    color: #fff;
+}
+.nazwisko::placeholder {
+    color: #ffd700;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.nazwisko:focus {
+    outline: none;
+    background-color: #222;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    color: #fff;
+}
+
+.nazwisko:hover {
+    outline: none;
+    background-color: #222;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    color: #fff;
+}
+
+.password::placeholder {
+    color: #ffd700;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.password:focus {
+    outline: none;
+    background-color: #222;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    color: #fff;
+}
+
+.password:hover {
+    outline: none;
+    background-color: #222;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    color: #fff;
+}
+
+.email:hover {
+    background-color: transparent;
+    color: rgb(255, 217, 0);
+    transform: translateY(-1px);
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.email::placeholder {
+    color: #ffd700;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.email:focus {
+    outline: none;
+    background-color: #222;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    color: #fff;
+}
+
 .formTitle{
     width: 400px;
     height: 50px;
@@ -498,4 +575,11 @@ body {
     color: rgb(255, 217, 0);
     transform: translateY(-1px);
     box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.linkreg {
+        color: #ffd700;
+        margin-top: 20px;
+        font-size: smaller;
+    
 }
