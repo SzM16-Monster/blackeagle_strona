@@ -1,1 +1,3 @@
+curl.exe -X POST http://127.0.0.1:5000/register -H "Content-Type: application/json" -d "{\"first_name\": \"Jan\", \"last_name\": \"Kowalski\", \"email\": \"jan2@example.com\", \"username\": \"jan1234\", \"password\": \"test123\"}"
+
 postgresql://feste790_user:8OrKT0R6yqZrETJ1fy4hMB486B9h9Txk@dpg-d06h50ili9vc73ecgr10-a.frankfurt-postgres.render.com/black_eagle_db
