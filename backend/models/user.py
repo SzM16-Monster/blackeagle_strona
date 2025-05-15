@@ -30,3 +30,15 @@ class AppUser_Movie(db.Model):
     user_rating = db.Column("user_rating", db.Float)
     watched_date = db.Column("watched_date", db.Date)
 
+    user = db.relationship('AppUser', backref='watched_movies')
+    movie = db.relationship('Movie', backref='watchers')
+    
+    def to_dict(self):
+        return {
+            'user_movie_id': self.user_movie_id,
+            'appuser_id': self.appuser_id,
+            'movie_id': self.movie_id,
+            'user_rating': self.user_rating,
+            'watched_date': self.watched_date.isoformat() if self.watched_date else None
+        }
+
