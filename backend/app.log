@@ -1,0 +1,73 @@
+2025-05-12 01:32:44,020 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-12 01:32:44,020 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 01:32:44,021 - INFO -  * Restarting with stat
+2025-05-12 01:32:45,454 - WARNING -  * Debugger is active!
+2025-05-12 01:32:45,464 - INFO -  * Debugger PIN: 550-651-594
+2025-05-12 01:32:46,106 - INFO - 127.0.0.1 - - [12/May/2025 01:32:46] "OPTIONS /recommendations HTTP/1.1" 200 -
+2025-05-12 01:32:46,107 - INFO - 127.0.0.1 - - [12/May/2025 01:32:46] "OPTIONS /recommendations HTTP/1.1" 200 -
+2025-05-12 01:32:46,112 - INFO - 127.0.0.1 - - [12/May/2025 01:32:46] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 01:32:46,119 - INFO - 127.0.0.1 - - [12/May/2025 01:32:46] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 01:32:47,951 - INFO - 127.0.0.1 - - [12/May/2025 01:32:47] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 01:32:47,955 - INFO - 127.0.0.1 - - [12/May/2025 01:32:47] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 01:32:49,439 - INFO - 127.0.0.1 - - [12/May/2025 01:32:49] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 01:32:49,444 - INFO - 127.0.0.1 - - [12/May/2025 01:32:49] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 01:33:08,264 - INFO - 127.0.0.1 - - [12/May/2025 01:33:08] "OPTIONS /user/movies HTTP/1.1" 200 -
+2025-05-12 01:33:08,265 - INFO - 127.0.0.1 - - [12/May/2025 01:33:08] "OPTIONS /user/movies HTTP/1.1" 200 -
+2025-05-12 01:33:08,273 - INFO - 127.0.0.1 - - [12/May/2025 01:33:08] "[31m[1mGET /user/movies HTTP/1.1[0m" 422 -
+2025-05-12 01:33:08,278 - INFO - 127.0.0.1 - - [12/May/2025 01:33:08] "[31m[1mGET /user/movies HTTP/1.1[0m" 422 -
+2025-05-12 01:34:50,221 - INFO -  * Detected change in 'C:\\Users\\karol\\source\\repos\\Feste790\\Black-Eagle\\backend\\services\\auth_service.py', reloading
+2025-05-12 01:34:50,380 - INFO -  * Restarting with stat
+2025-05-12 01:34:54,628 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-12 01:34:54,628 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 01:34:54,630 - INFO -  * Restarting with stat
+2025-05-12 01:34:55,893 - WARNING -  * Debugger is active!
+2025-05-12 01:34:55,902 - INFO -  * Debugger PIN: 550-651-594
+2025-05-12 01:34:56,838 - INFO - 127.0.0.1 - - [12/May/2025 01:34:56] "OPTIONS /user/movies HTTP/1.1" 200 -
+2025-05-12 01:34:56,841 - INFO - 127.0.0.1 - - [12/May/2025 01:34:56] "OPTIONS /user/movies HTTP/1.1" 200 -
+2025-05-12 01:34:56,844 - INFO - 127.0.0.1 - - [12/May/2025 01:34:56] "[31m[1mGET /user/movies HTTP/1.1[0m" 422 -
+2025-05-12 01:34:56,849 - INFO - 127.0.0.1 - - [12/May/2025 01:34:56] "[31m[1mGET /user/movies HTTP/1.1[0m" 422 -
+2025-05-12 01:34:59,529 - INFO - 127.0.0.1 - - [12/May/2025 01:34:59] "[31m[1mGET /user/movies HTTP/1.1[0m" 422 -
+2025-05-12 01:34:59,533 - INFO - 127.0.0.1 - - [12/May/2025 01:34:59] "[31m[1mGET /user/movies HTTP/1.1[0m" 422 -
+2025-05-12 01:35:18,458 - INFO - 127.0.0.1 - - [12/May/2025 01:35:18] "OPTIONS /user/movies HTTP/1.1" 200 -
+2025-05-12 01:35:18,460 - INFO - 127.0.0.1 - - [12/May/2025 01:35:18] "OPTIONS /user/movies HTTP/1.1" 200 -
+2025-05-12 01:35:18,464 - INFO - 127.0.0.1 - - [12/May/2025 01:35:18] "[31m[1mGET /user/movies HTTP/1.1[0m" 422 -
+2025-05-12 01:35:18,469 - INFO - 127.0.0.1 - - [12/May/2025 01:35:18] "[31m[1mGET /user/movies HTTP/1.1[0m" 422 -
+2025-05-12 01:35:28,279 - INFO - 127.0.0.1 - - [12/May/2025 01:35:28] "OPTIONS /recommendations HTTP/1.1" 200 -
+2025-05-12 01:35:28,280 - INFO - 127.0.0.1 - - [12/May/2025 01:35:28] "OPTIONS /recommendations HTTP/1.1" 200 -
+2025-05-12 01:35:28,285 - INFO - 127.0.0.1 - - [12/May/2025 01:35:28] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 01:35:28,288 - INFO - 127.0.0.1 - - [12/May/2025 01:35:28] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 01:35:51,707 - INFO -  * Detected change in 'C:\\Users\\karol\\source\\repos\\Feste790\\Black-Eagle\\backend\\api\\movies.py', reloading
+2025-05-12 01:35:51,910 - INFO -  * Restarting with stat
+2025-05-12 01:35:53,354 - WARNING -  * Debugger is active!
+2025-05-12 01:35:53,360 - INFO -  * Debugger PIN: 550-651-594
+2025-05-12 01:35:54,398 - INFO -  * Detected change in 'C:\\Users\\karol\\source\\repos\\Feste790\\Black-Eagle\\backend\\api\\movies.py', reloading
+2025-05-12 01:35:54,702 - INFO -  * Restarting with stat
+2025-05-12 01:35:56,016 - WARNING -  * Debugger is active!
+2025-05-12 01:35:56,024 - INFO -  * Debugger PIN: 550-651-594
+2025-05-12 01:35:59,088 - INFO -  * Detected change in 'C:\\Users\\karol\\source\\repos\\Feste790\\Black-Eagle\\backend\\api\\movies.py', reloading
+2025-05-12 01:35:59,285 - INFO -  * Restarting with stat
+2025-05-12 01:36:12,025 - INFO -  * Restarting with stat
+2025-05-12 02:23:42,481 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-12 02:23:42,481 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-12 02:23:42,482 - INFO -  * Restarting with stat
+2025-05-12 02:23:44,229 - WARNING -  * Debugger is active!
+2025-05-12 02:23:44,236 - INFO -  * Debugger PIN: 550-651-594
+2025-05-12 02:23:57,213 - INFO - 127.0.0.1 - - [12/May/2025 02:23:57] "OPTIONS /recommendations HTTP/1.1" 200 -
+2025-05-12 02:23:57,236 - INFO - 127.0.0.1 - - [12/May/2025 02:23:57] "OPTIONS /recommendations HTTP/1.1" 200 -
+2025-05-12 02:23:57,240 - INFO - 127.0.0.1 - - [12/May/2025 02:23:57] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 02:23:57,244 - INFO - 127.0.0.1 - - [12/May/2025 02:23:57] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 02:24:01,521 - INFO - 127.0.0.1 - - [12/May/2025 02:24:01] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 02:24:01,526 - INFO - 127.0.0.1 - - [12/May/2025 02:24:01] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 02:24:35,338 - INFO - 127.0.0.1 - - [12/May/2025 02:24:35] "OPTIONS /recommendations HTTP/1.1" 200 -
+2025-05-12 02:24:35,340 - INFO - 127.0.0.1 - - [12/May/2025 02:24:35] "OPTIONS /recommendations HTTP/1.1" 200 -
+2025-05-12 02:24:35,344 - INFO - 127.0.0.1 - - [12/May/2025 02:24:35] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 02:24:35,348 - INFO - 127.0.0.1 - - [12/May/2025 02:24:35] "[31m[1mGET /recommendations HTTP/1.1[0m" 422 -
+2025-05-12 02:24:42,534 - INFO - 127.0.0.1 - - [12/May/2025 02:24:42] "OPTIONS /user/movies HTTP/1.1" 200 -
+2025-05-12 02:24:42,535 - INFO - 127.0.0.1 - - [12/May/2025 02:24:42] "OPTIONS /user/movies HTTP/1.1" 200 -
+2025-05-12 02:24:42,541 - INFO - 127.0.0.1 - - [12/May/2025 02:24:42] "[31m[1mGET /user/movies HTTP/1.1[0m" 422 -
+2025-05-12 02:24:42,546 - INFO - 127.0.0.1 - - [12/May/2025 02:24:42] "[31m[1mGET /user/movies HTTP/1.1[0m" 422 -
+2025-05-12 02:24:54,233 - INFO -  * Detected change in 'C:\\Users\\karol\\source\\repos\\Feste790\\Black-Eagle\\backend\\api\\omdb.py', reloading
+2025-05-12 02:24:54,438 - INFO -  * Restarting with stat

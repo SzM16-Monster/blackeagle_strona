@@ -1,0 +1,46 @@
+2025-04-28 21:23:19,413 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-28 21:23:19,413 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-28 21:23:19,416 - INFO -  * Restarting with stat
+2025-04-28 21:23:20,982 - WARNING -  * Debugger is active!
+2025-04-28 21:23:20,986 - INFO -  * Debugger PIN: 346-963-207
+2025-04-28 21:23:25,035 - ERROR - Error fetching movies: The current Flask app is not registered with this 'SQLAlchemy' instance. Did you forget to call 'init_app', or did you create multiple 'SQLAlchemy' instances?
+2025-04-28 21:23:25,036 - INFO - 127.0.0.1 - - [28/Apr/2025 21:23:25] "[35m[1mGET /movies?user_id=1 HTTP/1.1[0m" 500 -
+2025-04-28 21:23:25,304 - INFO - 127.0.0.1 - - [28/Apr/2025 21:23:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-28 21:50:35,968 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-28 21:50:35,969 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-28 21:50:35,972 - INFO -  * Restarting with stat
+2025-04-28 21:50:37,436 - WARNING -  * Debugger is active!
+2025-04-28 21:50:37,453 - INFO -  * Debugger PIN: 346-963-207
+2025-04-28 21:50:52,983 - INFO - 127.0.0.1 - - [28/Apr/2025 21:50:52] "GET /movies?user_id=1 HTTP/1.1" 200 -
+2025-04-28 21:55:18,566 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-28 21:55:18,567 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-28 21:55:18,568 - INFO -  * Restarting with stat
+2025-04-28 21:55:20,283 - WARNING -  * Debugger is active!
+2025-04-28 21:55:20,283 - INFO -  * Debugger PIN: 346-963-207
+2025-04-28 21:55:32,135 - INFO - 127.0.0.1 - - [28/Apr/2025 21:55:32] "GET /movies?user_id=1 HTTP/1.1" 200 -
+2025-04-28 21:55:33,617 - INFO - 127.0.0.1 - - [28/Apr/2025 21:55:33] "GET /movies?user_id=1 HTTP/1.1" 200 -
+2025-04-28 21:55:51,457 - INFO - 127.0.0.1 - - [28/Apr/2025 21:55:51] "[33mGET /movies-by-genre=Comedy?user_id=1 HTTP/1.1[0m" 404 -
+2025-04-28 21:56:38,189 - INFO -  * Detected change in 'C:\\Users\\karol\\source\\repos\\Feste790\\Black-Eagle\\backend\\api\\movies.py', reloading
+2025-04-28 21:56:38,386 - INFO -  * Restarting with stat
+2025-04-28 21:56:40,032 - WARNING -  * Debugger is active!
+2025-04-28 21:56:40,037 - INFO -  * Debugger PIN: 346-963-207
+2025-04-28 21:56:49,433 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-04-28 21:56:49,434 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-28 21:56:49,436 - INFO -  * Restarting with stat
+2025-04-28 21:56:51,045 - WARNING -  * Debugger is active!
+2025-04-28 21:56:51,045 - INFO -  * Debugger PIN: 346-963-207
+2025-04-28 21:56:54,850 - INFO - 127.0.0.1 - - [28/Apr/2025 21:56:54] "[33mGET /movies-by-genre=Comedy?user_id=1 HTTP/1.1[0m" 404 -
+2025-04-28 21:57:30,546 - INFO - 127.0.0.1 - - [28/Apr/2025 21:57:30] "GET /movies-by-genre?Comedy?user_id=1 HTTP/1.1" 200 -
+2025-04-28 21:58:25,183 - INFO - 127.0.0.1 - - [28/Apr/2025 21:58:25] "GET /movies-by-genre?user_id=1"&"genre=Comedy HTTP/1.1" 200 -
+2025-04-28 22:01:00,874 - INFO - 127.0.0.1 - - [28/Apr/2025 22:01:00] "GET /movies-by-genre?user_id=1"&"genre=Comedy HTTP/1.1" 200 -
+2025-04-28 22:01:32,328 - INFO - 127.0.0.1 - - [28/Apr/2025 22:01:32] "[33mGET /moviesbygenre?user_id=1&genre=Comedy HTTP/1.1[0m" 404 -
+2025-04-28 22:01:46,125 - ERROR - Error fetching movies by genre: Don't know how to join to <Mapper at 0x16374cf10c0; Movie_Genre>. Please use the .select_from() method to establish an explicit left side, as well as providing an explicit ON clause if not present already to help resolve the ambiguity.
+2025-04-28 22:01:46,125 - INFO - 127.0.0.1 - - [28/Apr/2025 22:01:46] "[35m[1mGET /movies-by-genre?user_id=1&genre=Comedy HTTP/1.1[0m" 500 -
+2025-04-28 22:01:59,490 - ERROR - Error fetching movies by genre: Don't know how to join to <Mapper at 0x16374cf10c0; Movie_Genre>. Please use the .select_from() method to establish an explicit left side, as well as providing an explicit ON clause if not present already to help resolve the ambiguity.
+2025-04-28 22:01:59,491 - INFO - 127.0.0.1 - - [28/Apr/2025 22:01:59] "[35m[1mGET /movies-by-genre?user_id=1&genre=Horror HTTP/1.1[0m" 500 -
+2025-04-28 22:02:02,640 - ERROR - Error fetching movies by genre: Don't know how to join to <Mapper at 0x16374cf10c0; Movie_Genre>. Please use the .select_from() method to establish an explicit left side, as well as providing an explicit ON clause if not present already to help resolve the ambiguity.
+2025-04-28 22:02:02,641 - INFO - 127.0.0.1 - - [28/Apr/2025 22:02:02] "[35m[1mGET /movies-by-genre?user_id=1&genre=horror HTTP/1.1[0m" 500 -
